@@ -1,14 +1,14 @@
 #include <string>
 #include <cassert>
 
-std::string ConvertDecimalNumber(int decimal_number, int radix) {
+std::string ConvertDecimalNumber(int decimal_number, const int radix) {
     std::string result;
-    
+
     if (decimal_number < 0 || radix < 2 || radix > 16) {return result;}
-    
+
     while(decimal_number > 0) {
-        const int digit = decimal_number % radix;
-        result = ((digit < 10) ? char(digit + '0') : char(digit - 10 + 'A')) + result;
+        const int remainder = decimal_number % radix;
+        result = ((remainder < 10) ? char('0' + remainder) : char('A' + (remainder - 10))) + result;
         decimal_number /= radix;
     }
 
