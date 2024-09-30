@@ -1,9 +1,8 @@
-#include <cassert>
 #include <string>
+#include <cassert>
 
 std::string DecimalConvert(int number, int base) {
-    if (number < 0) {return "";}
-    if (base < 2 || base > 16) {return "";}
+    if (number < 0 || base < 2 || base > 16) {return "";}
 
     std::string result;
 
@@ -24,6 +23,10 @@ void Test() {
     assert(DecimalConvert(619, 16) == "26B");
     assert(DecimalConvert(934, 16) == "3A6");
     assert(DecimalConvert(9999, 16) == "270F");
+
+    assert(DecimalConvert(-1, 16).empty());
+    assert(DecimalConvert(229, 1).empty());
+    assert(DecimalConvert(112, 17).empty());
 }
 
 int main() {
